@@ -12,7 +12,7 @@
         "name": "Kong HQ"
       },
       "title": "My 1st API",
-      "description": "This is my first API, it is a simple API to test the OpenAPI specification (OAS)",
+      "description": "This is my first API, it is a simple API to test the OpenAPI specification (-OAS-)",
       "version": "1.0.0"
     },
     "paths": {
