@@ -1,0 +1,79 @@
+_format_version: "3.0"
+services:
+- host: httpbin.konghq.com
+  id: ca2db6c4-b46e-5df6-9d11-6a19699b169b
+  name: my-1st-api
+  path: /
+  plugins: []
+  port: 443
+  protocol: https
+  routes:
+  - id: 78dedd78-c275-5867-a73b-6a146146947f
+    methods:
+    - GET
+    name: my-1st-api_anything-get
+    paths:
+    - ~/anything$
+    plugins: []
+    regex_priority: 200
+    strip_path: false
+    tags:
+    - my-1st-api
+  - id: 12ff581c-6e9f-57da-8808-99df0abde5c2
+    methods:
+    - POST
+    name: my-1st-api_anything-post
+    paths:
+    - ~/anything$
+    plugins: []
+    regex_priority: 200
+    strip_path: false
+    tags:
+    - my-1st-api
+  - id: 2de908d4-b1d6-5dad-b313-25cc0e6feb80
+    methods:
+    - GET
+    name: my-1st-api_query
+    paths:
+    - ~/anything/query$
+    plugins: []
+    regex_priority: 200
+    strip_path: false
+    tags:
+    - my-1st-api
+  - id: 40c8c4d7-4409-5d0f-ade6-08f2a56376d4
+    methods:
+    - GET
+    name: my-1st-api_delay
+    paths:
+    - ~/delay/(?<delay_value>[^#?/]+)$
+    plugins: []
+    regex_priority: 100
+    strip_path: false
+    tags:
+    - my-1st-api
+  - id: 512f6918-4f02-5783-adc3-e6b8cd3fd9d7
+    methods:
+    - GET
+    name: my-1st-api_status-code
+    paths:
+    - ~/status/(?<codes>[^#?/]+)$
+    plugins: []
+    regex_priority: 100
+    strip_path: false
+    tags:
+    - my-1st-api
+  - id: 8a0b026f-e31c-5d5d-869d-c0e5f52caf78
+    methods:
+    - GET
+    name: my-1st-api_get-uuid
+    paths:
+    - ~/uuid$
+    plugins: []
+    regex_priority: 200
+    strip_path: false
+    tags:
+    - my-1st-api
+  tags:
+  - my-1st-api
+upstreams: []
