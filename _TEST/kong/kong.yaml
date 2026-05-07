@@ -3,9 +3,6 @@ consumer_groups:
 - name: gold
   tags:
   - platform-repo-managed
-- name: lifetime
-  tags:
-  - platform-repo-managed
 - name: platinum
   tags:
   - platform-repo-managed
