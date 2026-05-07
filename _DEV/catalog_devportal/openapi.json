@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "servers": [
     {
-      "url": "https://b890115646.gateways.konggateway.com"
+      "url": "https://a0fa1f168d.gateways.konggateway.com"
     }
   ],
   "info": {
