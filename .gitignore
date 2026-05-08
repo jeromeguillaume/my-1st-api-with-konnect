@@ -9,3 +9,5 @@ tls*/
 *.env
 *.log
 kongctl-*
+/demo.yaml
+/temp.yaml

@@ -50,7 +50,8 @@ jobs:
         run: |
           deck file merge \
             .github/artifacts/kong/kong-combined.yaml \
-            platform/kong/consumers/*  |
+            platform/kong/consumers/* \
+            platform/kong/partials/*  |
           deck file patch \
             platform/kong/patches.yaml |
           deck file add-plugins \

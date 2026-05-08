@@ -1,22 +1,16 @@
 consumers:
-- username: dfreese
-  jwt_secrets:
-  - algorithm: HS256
-    key: "1kVXYL5NarltY3qztOPz1PhaVmyYiKct"
-    secret: "Solution-Demo-for-kong-Secret-2025!"
-  groups:
-  - name: platinum
-- username: jdoe
-  jwt_secrets:
-  - algorithm: HS256
-    key: "B1HkQ3eu4tMQXjGZ2qHM3uFqjsW4IKtv"
-    secret: "Solution-Demo-for-kong-Secret-2025!"
+- username: gold-1
+  keyauth_credentials:
+  - key: gold
   groups:
   - name: gold
-- username: jsmith
-  jwt_secrets:
-  - algorithm: HS256
-    key: "8KWyjzsPpjkh5s7GTXw9hdp2tgnlXcyD"
-    secret: "Solution-Demo-for-kong-Secret-2025!"
+- username: silver-1
+  keyauth_credentials:
+  - key: silver
   groups:
   - name: silver
+- username: bronze-1
+  keyauth_credentials:
+  - key: bronze
+  groups:
+  - name: bronze
