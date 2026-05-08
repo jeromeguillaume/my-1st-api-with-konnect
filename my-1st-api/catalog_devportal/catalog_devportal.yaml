@@ -14,7 +14,7 @@ apis:
     description: "API managing many things in the company"
     versions:
       - ref: v1
-        spec: !file ./openapi.json
+        spec: !file ./openapi.yaml
         version: 1.0.0
     documents:
       - title: "v1 doc"

@@ -41,7 +41,7 @@ jobs:
         run: |
           cp -r _DEV/* _TEST/
           yq -i '(.apis[].attributes.status) = ["test"]' _TEST/catalog_devportal/catalog_devportal.yaml
-          yq -i '.servers[0].url = "${{ vars.KONG_GATEWAY_ADDR }}"' _TEST/catalog_devportal/openapi.json
+          yq -i '.servers[0].url = "${{ vars.KONG_GATEWAY_ADDR }}"' _TEST/catalog_devportal/openapi.yaml
       
       - name: Prepare PROD process
         if: ${{ inputs.stage == 'PROD' }}
@@ -49,7 +49,7 @@ jobs:
           cp -r _TEST/* _PROD/
           yq -i '(.apis[].attributes.status) = ["production"]' _PROD/catalog_devportal/catalog_devportal.yaml
           yq -i '(.portals[]._external.selector.matchFields.name) = "ENGIE Internal"' _PROD/catalog_devportal/catalog_devportal.yaml
-          yq -i '.servers[0].url = "${{ vars.KONG_GATEWAY_ADDR }}"' _PROD/catalog_devportal/openapi.json
+          yq -i '.servers[0].url = "${{ vars.KONG_GATEWAY_ADDR }}"' _PROD/catalog_devportal/openapi.yaml
       
       - name: Setup deck for Kong Gateway
         if: runner.environment != 'self-hosted'
