@@ -19,7 +19,7 @@ add-plugins:
             - 100000
           strategy: redis
           sync_rate: 0      
-          partials:
-          - id: 85e91243-b735-41e1-bfd8-ba9950771d17
-            name: redis-france-dev
-            path: config.redis
+        partials:
+        - id: 85e91243-b735-41e1-bfd8-ba9950771d17
+          name: redis-france-dev
+          path: config.redis

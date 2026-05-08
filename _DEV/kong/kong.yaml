@@ -63,10 +63,8 @@ services:
       - 100000
       partials:
       - id: 85e91243-b735-41e1-bfd8-ba9950771d17
-        name: redis-france-dev
-        path: config.redis
-      strategy: redis
       sync_rate: 0
+      strategy: redis
       window_size:
       - 60
       - 3600
