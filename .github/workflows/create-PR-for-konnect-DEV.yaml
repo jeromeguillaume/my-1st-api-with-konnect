@@ -24,6 +24,10 @@ jobs:
     #runs-on: ubuntu-latest
     runs-on: self-hosted
     name: Create Pull Request for konnect
+    env:
+      DECK_KONNECT_REDIS_ID: DECK_${{ vars.KONNECT_REDIS_ID }}
+      DECK_KONNECT_REDIS_NAME: DECK_${{ vars.KONNECT_REDIS_NAME }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

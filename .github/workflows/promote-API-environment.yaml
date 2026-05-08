@@ -30,6 +30,9 @@ jobs:
     runs-on: self-hosted
     environment:
       name:  ${{ inputs.region }}_${{ inputs.stage }}
+    env:
+      DECK_KONNECT_REDIS_ID: DECK_${{ vars.KONNECT_REDIS_ID }}
+      DECK_KONNECT_REDIS_NAME: DECK_${{ vars.KONNECT_REDIS_NAME }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
