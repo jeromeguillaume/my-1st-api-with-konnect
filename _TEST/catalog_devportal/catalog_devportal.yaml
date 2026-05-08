@@ -1,0 +1,25 @@
+portals:
+  - ref: engie-devportal
+    _external:
+      selector:
+        matchFields:
+          name: "ENGIE Internal - non-prod"
+apis:
+  - ref: my-1st-api
+    name: "my 1st API"
+    attributes:
+      status:
+        - test
+      type: ["REST"]
+    description: "API managing many things in the company"
+    versions:
+      - ref: v1
+        spec: !file ./openapi.yaml
+        version: 1.0.0
+    documents:
+      - title: "v1 doc"
+        content: !file ./my-1st-api-description.md
+api_publications:
+  - ref: my-1st-api-pub
+    api: my-1st-api
+    portal_id: !ref engie-devportal#id
