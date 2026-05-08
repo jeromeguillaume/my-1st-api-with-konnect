@@ -28,6 +28,6 @@ add-plugins:
           window_type: fixed
         enabled: true
         partials:
-        - id: 85e91243-b735-41e1-bfd8-ba9950771d17
-          name: redis-france-dev
+        - id: ${{ env "DECK_KONNECT_REDIS_ID" }}
+          name: ${{ env "DECK_KONNECT_REDIS_NAME" }}
           path: config.redis

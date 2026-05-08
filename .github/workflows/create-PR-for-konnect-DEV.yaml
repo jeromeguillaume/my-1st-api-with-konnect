@@ -59,7 +59,7 @@ jobs:
           deck file add-tags \
             -o _DEV/kong/kong.yaml \
             "platform-repo-managed"
-      
+
       - name: Kong Gateway diff configuration
         id: deck-diff
         run: |

@@ -3,3 +3,9 @@ partials:
   - name: redis-france-dev
     type: redis-ee
     id: 85e91243-b735-41e1-bfd8-ba9950771d17
+  - name: redis-france-test
+    type: redis-ee
+    id: 4c6d1a78-7a98-4cd2-a855-438895b247c4
+  - name: redis-france-prod
+    type: redis-ee
+    id: 61e26f1b-8caa-4727-9654-94bee86ef1e0

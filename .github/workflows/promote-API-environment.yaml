@@ -36,6 +36,8 @@ jobs:
         with:
           persist-credentials: true
 
+      # Change the API status to "test"
+      # Change the Gateway URL to Test URL
       - name: Prepare TEST process
         if: ${{ inputs.stage == 'TEST' }}
         run: |
@@ -43,6 +45,9 @@ jobs:
           yq -i '(.apis[].attributes.status) = ["test"]' _TEST/catalog_devportal/catalog_devportal.yaml
           yq -i '.servers[0].url = "${{ vars.KONG_GATEWAY_ADDR }}"' _TEST/catalog_devportal/openapi.yaml
       
+      # Change the API status to "production"
+      # Change the DevPortal Name to Production DevPortal
+      # Change the Gateway URL to Production URL
       - name: Prepare PROD process
         if: ${{ inputs.stage == 'PROD' }}
         run: |
