@@ -69,7 +69,7 @@ jobs:
                 --konnect-addr ${{ vars.KONNECT_ADDR }} \
                 _DEV/kong/kong.yaml >> $GITHUB_ENV
           echo "$EOF" >> $GITHUB_ENV
-
+      
       - name: Setup kongctl for Konnect Catalog and DevPortal
         uses: kong/setup-kongctl@v1
         with:
