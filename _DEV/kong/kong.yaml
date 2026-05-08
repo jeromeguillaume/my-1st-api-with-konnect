@@ -38,14 +38,13 @@ consumers:
   - platform-repo-managed
   username: bronze-1
 partials:
-- id: 85e91243-b735-41e1-bfd8-ba9950771d17
-  name: redis-france-dev
-  type: redis-ee
-- id: 4c6d1a78-7a98-4cd2-a855-438895b247c4
-  name: redis-france-test
-  type: redis-ee
-- id: 61e26f1b-8caa-4727-9654-94bee86ef1e0
-  name: redis-france-prod
+- id: ${{ env "DECK_KONNECT_REDIS_ID" }}
+  name: ${{ env "DECK_KONNECT_REDIS_NAME" }}
+  tags:
+  - konnect-managed
+  - ${{ env "DECK_KONNECT_REDIS_ID" }}
+  - ${{ env "DECK_KONNECT_REDIS_NAME" }}
+  - managed_cache.v0
   type: redis-ee
 services:
 - host: httpbin.konghq.com
@@ -58,6 +57,12 @@ services:
         headers:
         - X-Engie-Security:passed
     name: response-transformer
+    tags:
+    - platform-repo-managed
+  - config:
+      key_names:
+      - apikey
+    name: key-auth
     tags:
     - platform-repo-managed
   - config:
