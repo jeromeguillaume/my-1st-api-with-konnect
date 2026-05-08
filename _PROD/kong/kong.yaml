@@ -48,7 +48,14 @@ services:
   id: ca2db6c4-b46e-5df6-9d11-6a19699b169b
   name: my-1st-api
   path: /
-  plugins: []
+  plugins:
+  - config:
+      add:
+        headers:
+        - 'X-Engie-Security: passed'
+    name: response-transformer
+    tags:
+    - platform-repo-managed
   port: 443
   protocol: https
   routes:
