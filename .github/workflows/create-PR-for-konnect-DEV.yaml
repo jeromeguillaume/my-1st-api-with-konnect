@@ -50,9 +50,12 @@ jobs:
         run: |
           deck file merge \
             .github/artifacts/kong/kong-combined.yaml \
+            platform/kong/partials/* \
             platform/kong/consumers/*  |
           deck file patch \
             platform/kong/patches.yaml |
+          deck file add \
+            platform/kong/addplugins.yaml |          
           deck file add-tags \
             -o _DEV/kong/kong.yaml \
             "platform-repo-managed"

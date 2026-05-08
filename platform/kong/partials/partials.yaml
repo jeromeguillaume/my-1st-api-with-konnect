@@ -1,0 +1,4 @@
+partials:
+  - name: redis-france-dev
+    type: redis-ee
+    id: 85e91243-b735-41e1-bfd8-ba9950771d17
