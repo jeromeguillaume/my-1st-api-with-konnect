@@ -54,7 +54,7 @@ jobs:
             platform/kong/consumers/*  |
           deck file patch \
             platform/kong/patches.yaml |
-          deck file add \
+          deck file add-plugins \
             platform/kong/addplugins.yaml |          
           deck file add-tags \
             -o _DEV/kong/kong.yaml \
