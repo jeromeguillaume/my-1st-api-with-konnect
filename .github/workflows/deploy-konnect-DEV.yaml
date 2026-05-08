@@ -7,6 +7,10 @@ on:
 jobs:
   deploy-konnect:
     environment: FRANCE_DEV
+    env:
+      DECK_KONNECT_REDIS_ID: ${{ vars.KONNECT_REDIS_ID }}
+      DECK_KONNECT_REDIS_NAME: ${{ vars.KONNECT_REDIS_NAME }}
+    
     if: github.event.pull_request.merged == true
     #runs-on: ubuntu-latest
     runs-on: self-hosted
