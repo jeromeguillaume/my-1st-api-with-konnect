@@ -61,16 +61,18 @@ services:
       - 10
       - 1000
       - 100000
-      partials:
-      - id: 85e91243-b735-41e1-bfd8-ba9950771d17
-      sync_rate: 0
       strategy: redis
+      sync_rate: 0
       window_size:
       - 60
       - 3600
       - 86400
       window_type: fixed
     name: rate-limiting-advanced
+    partials:
+    - id: 85e91243-b735-41e1-bfd8-ba9950771d17
+      name: redis-france-dev
+      path: config.redis
     tags:
     - platform-repo-managed
   port: 443
