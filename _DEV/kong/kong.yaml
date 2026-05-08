@@ -43,12 +43,38 @@ consumers:
   tags:
   - platform-repo-managed
   username: jsmith
+partials:
+- id: 85e91243-b735-41e1-bfd8-ba9950771d17
+  name: redis-france-dev
+  type: redis-ee
 services:
 - host: httpbin.konghq.com
   id: ca2db6c4-b46e-5df6-9d11-6a19699b169b
   name: my-1st-api
   path: /
-  plugins: []
+  plugins:
+  - config:
+      error_code: 429
+      error_message: API rate limit exceeded
+      identifier: consumer
+      limit:
+      - 10
+      - 1000
+      - 100000
+      partials:
+      - id: 85e91243-b735-41e1-bfd8-ba9950771d17
+        name: redis-france-dev
+        path: config.redis
+      strategy: redis
+      sync_rate: 0
+      window_size:
+      - 60
+      - 3600
+      - 86400
+      window_type: fixed
+    name: rate-limiting-advanced
+    tags:
+    - platform-repo-managed
   port: 443
   protocol: https
   routes:
