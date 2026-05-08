@@ -3,46 +3,50 @@ consumer_groups:
 - name: gold
   tags:
   - platform-repo-managed
-- name: platinum
+- name: silver
   tags:
   - platform-repo-managed
-- name: silver
+- name: bronze
   tags:
   - platform-repo-managed
 consumers:
 - groups:
-  - name: platinum
-  jwt_secrets:
-  - algorithm: HS256
-    key: 1kVXYL5NarltY3qztOPz1PhaVmyYiKct
-    secret: Solution-Demo-for-kong-Secret-2025!
-    tags:
-    - platform-repo-managed
-  tags:
-  - platform-repo-managed
-  username: dfreese
-- groups:
   - name: gold
-  jwt_secrets:
-  - algorithm: HS256
-    key: B1HkQ3eu4tMQXjGZ2qHM3uFqjsW4IKtv
-    secret: Solution-Demo-for-kong-Secret-2025!
+  keyauth_credentials:
+  - key: gold
     tags:
     - platform-repo-managed
   tags:
   - platform-repo-managed
-  username: jdoe
+  username: gold-1
 - groups:
   - name: silver
-  jwt_secrets:
-  - algorithm: HS256
-    key: 8KWyjzsPpjkh5s7GTXw9hdp2tgnlXcyD
-    secret: Solution-Demo-for-kong-Secret-2025!
+  keyauth_credentials:
+  - key: silver
     tags:
     - platform-repo-managed
   tags:
   - platform-repo-managed
-  username: jsmith
+  username: silver-1
+- groups:
+  - name: bronze
+  keyauth_credentials:
+  - key: bronze
+    tags:
+    - platform-repo-managed
+  tags:
+  - platform-repo-managed
+  username: bronze-1
+partials:
+- id: 85e91243-b735-41e1-bfd8-ba9950771d17
+  name: redis-france-dev
+  type: redis-ee
+- id: 4c6d1a78-7a98-4cd2-a855-438895b247c4
+  name: redis-france-test
+  type: redis-ee
+- id: 61e26f1b-8caa-4727-9654-94bee86ef1e0
+  name: redis-france-prod
+  type: redis-ee
 services:
 - host: httpbin.konghq.com
   id: ca2db6c4-b46e-5df6-9d11-6a19699b169b
@@ -52,8 +56,33 @@ services:
   - config:
       add:
         headers:
-        - 'X-Engie-Security: passed'
+        - X-Engie-Security:passed
     name: response-transformer
+    tags:
+    - platform-repo-managed
+  - config:
+      error_code: 429
+      error_message: API rate limit exceeded
+      limit:
+      - 10
+      - 1000
+      - 10000
+      redis:
+        redis_proxy_type: null
+      retry_after_jitter_max: 0
+      strategy: redis
+      sync_rate: 0
+      window_size:
+      - 60
+      - 3600
+      - 86400
+      window_type: fixed
+    enabled: true
+    name: rate-limiting-advanced
+    partials:
+    - id: ${{ env "DECK_KONNECT_REDIS_ID" }}
+      name: ${{ env "DECK_KONNECT_REDIS_NAME" }}
+      path: config.redis
     tags:
     - platform-repo-managed
   port: 443
