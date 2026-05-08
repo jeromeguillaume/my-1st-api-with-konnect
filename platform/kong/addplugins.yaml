@@ -24,12 +24,10 @@ add-plugins:
           - 60
           - 3600
           - 86400
-          redis:
-            redis_proxy_type: null
-          retry_after_jitter_max: 0
           strategy: redis
           sync_rate: 0
           window_type: fixed
+          namespace: ${{ env "DECK_KONNECT_REDIS_ID" }}-my-1st-api
         enabled: true
         partials:
         - id: ${{ env "DECK_KONNECT_REDIS_ID" }}
